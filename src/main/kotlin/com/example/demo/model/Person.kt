@@ -12,4 +12,6 @@ data class Person (val firstName: String, val lastName : String){
 
 }
 
-interface PersonRepo : CrudRepository<Person, Int>
+interface PersonRepo : CrudRepository<Person, Int> {
+    fun findByLastName(lastName: String): List<Person>
+}

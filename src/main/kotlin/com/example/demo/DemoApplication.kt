@@ -15,7 +15,7 @@ class DemoApplication {
 
         println("Let's inspect the beans provided by Spring Boot:")
 
-        ctx.beanDefinitionNames.sorted().forEach(::println)
+//        ctx.beanDefinitionNames.sorted().forEach(::println)
 
 
     }
