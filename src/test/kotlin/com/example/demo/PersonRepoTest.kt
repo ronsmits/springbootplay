@@ -5,18 +5,18 @@ import com.example.demo.model.PersonRepo
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 import org.springframework.test.context.junit4.SpringRunner
-import javax.inject.Inject
 import javax.persistence.EntityManager
 
 @RunWith(SpringRunner::class)
 @DataJpaTest
 
 class PersonRepoTest {
-    @Inject
+    @Autowired
     lateinit var em: EntityManager
-    @Inject
+    @Autowired
     lateinit var repo: PersonRepo
 
     @Test
@@ -31,7 +31,7 @@ class PersonRepoTest {
         em.persist(Person("Piet", "Puk"))
         em.persist(Person("Zwarte", "Piet"))
 
-        val findal = repo.findByLastName("Puk")
+        val findal = repo.findByLastNameContainingIgnoreCase("Puk")
         assertEquals(findal.size, 1)
         assertEquals(findal[0].firstName, "Piet")
     }

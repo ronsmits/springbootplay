@@ -13,5 +13,5 @@ data class Person (val firstName: String, val lastName : String){
 }
 
 interface PersonRepo : CrudRepository<Person, Int> {
-    fun findByLastName(lastName: String): List<Person>
+    fun findByLastNameContainingIgnoreCase(lastName: String): List<Person>
 }
